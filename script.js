@@ -58,7 +58,7 @@ const contractionsMap = new Map([
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     outputarea.textContent = replaceContractions(textarea.value);
-    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+    copyBtn.innerHTML = '<i class="fa-regular fa-copy text-gray-500"></i>';
     output.hidden = false;
 });
 
@@ -81,7 +81,7 @@ async function copyToClipboard() {
     const text = outputarea.value;
     try {
         await navigator.clipboard.writeText(text);
-        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        copyBtn.innerHTML = '<i class="fa-solid fa-check text-green-500"></i>';
     } catch (err) {
         console.error('Failed to copy text: ', err);
     }
