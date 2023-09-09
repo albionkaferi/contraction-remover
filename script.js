@@ -78,7 +78,7 @@ function replaceContractions(text) {
 }
 
 function normalizeApostrophes(text) {
-    return text.replace(/[`‘’]/g, "'");
+    return text.replace(/[\u0027\u2019\u2018\u2032\u0060\u00B4\u02BC\uFF07]/g, "'");
 }
 
 async function copyToClipboard() {
