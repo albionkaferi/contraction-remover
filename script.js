@@ -57,7 +57,8 @@ const contractionsMap = new Map([
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    outputarea.textContent = replaceContractions(textarea.value);
+    const normalizedText = normalizeApostrophes(textarea.value);
+    outputarea.textContent = replaceContractions(normalizedText);
     copyBtn.innerHTML = '<i class="fa-regular fa-copy text-gray-500"></i>';
     output.hidden = false;
 });
@@ -68,13 +69,16 @@ clearBtn.addEventListener('click', (e) => {
 });
 
 function replaceContractions(text) {
-    
     const pattern = new RegExp(Array.from(contractionsMap.keys()).join("|"), "gi");
     return text.replace(pattern, (matched) => {
         let lowerCaseMatched = matched.toLowerCase();
         let expanded = contractionsMap.get(lowerCaseMatched);
         return (matched[0] === matched[0].toUpperCase()) ? expanded.charAt(0).toUpperCase() + expanded.slice(1) : expanded;
     });
+}
+
+function normalizeApostrophes(text) {
+    return text.replace(/[`‘’]/g, "'");
 }
 
 async function copyToClipboard() {
