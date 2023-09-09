@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contraction Remover</title>
+    <script src="https://kit.fontawesome.com/aa96efba11.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div class="flex flex-col items-center">
-        <form class="w-full max-w-lg">
-            <label class="block" for="text">Enter your text:</label>
+        <div>
+            <h1 class="text-4xl py-10">Contraction Remover</h1>
+        </div>
+        <form class="w-full max-w-lg py-6">
             <textarea class="resize-y w-full px-3 py-2 border rounded-md text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="textarea" rows="4" placeholder="Enter your text..."></textarea>
-            <button id="submitBtn" class="bg-blue-400 text-white p-2 rounded-md">Submit</button>
+            <div class="flex justify-between py-2">
+                <button id="clearBtn" class="p-2 outline outline-gray-400 text-gray-600 rounded-md hover:bg-gray-200">Clear</button>
+                <button id="submitBtn" class="bg-blue-400 text-white hover:bg-blue-500 p-2 rounded-md">Submit</button>
+            </div>
         </form>
-        <div id="output" hidden>
+        <div id="output" class="w-full max-w-lg py-6 border-t border-dashed border-gray-300" hidden>
+            <div class="flex justify-between">
+                <h2>Result</h2>
+                <button id="copyBtn" onclick="copyToClipboard()" class="px-2 py-1 rounded-md hover:bg-gray-100"></button>
+            </div>
             <textarea id="outputarea" class="resize-none w-full max-w-lg px-3 py-2 border rounded-md" rows="4" readonly></textarea>
-            <button id="copyBtn" onclick="copyToClipboard()">Copy</button>
         </div>
     </div>
 
