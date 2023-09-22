@@ -52,7 +52,11 @@ const contractionsMap = new Map([
     ["you'd", "you would"],
     ["you'll", "you will"],
     ["you're", "you are"],
-    ["you've", "you have"]
+    ["you've", "you have"],
+    ["there's", "there is"],
+    ["that'll", "that will"],
+    ["should've", "should have"],
+    ["might've", "might have"],
 ]);
 
 submitBtn.addEventListener('click', (e) => {
@@ -86,6 +90,9 @@ async function copyToClipboard() {
     try {
         await navigator.clipboard.writeText(text);
         copyBtn.innerHTML = '<i class="fa-solid fa-check text-green-500"></i>';
+        setTimeout(() => {
+            copyBtn.innerHTML = '<i class="fa-regular fa-copy text-gray-500"></i>';
+        }, 1000);
     } catch (err) {
         console.error('Failed to copy text: ', err);
     }
